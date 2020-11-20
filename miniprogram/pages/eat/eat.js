@@ -1,66 +1,43 @@
 // miniprogram/pages/eat/eat.js
+
+const app = getApp()
+var util = require('../../utils/util.js');
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    menuOneDay: {
+      menuDate: new Date(),
+      chefMemberRole: '爷爷',
+      menuList: [
+        {
+          menuType: 0, menuTime: '07:00', dinnersNum: 3, menuMealList:
+            [{
+              meal_name: '狮子头', meal_photo_path: 'cloud://test-6gokn0pp1b7fd7cf.7465-test-6gokn0pp1b7fd7cf-1304259011/my-image.PNG', meal_desc: '', meal_weight_num: 100
+            }, {
+              meal_name: '狮子头', meal_photo_path: 'cloud://test-6gokn0pp1b7fd7cf.7465-test-6gokn0pp1b7fd7cf-1304259011/查找和替换2.png', meal_desc: '', meal_weight_num: 100
+            }
+            ]
+        },
+        { menuType: 1, menuTime: '11:30', dinnersNum: 4 },
+        { menuType: 2, menuTime: '06:30', dinnersNum: 4 }
+      ]
+    },
+    date: util.formatTime(app.globalData.pickDate, 'Y-M-D')
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+
   onLoad: function (options) {
-
+    // const db = wx.cloud.database()
+    // const menus = db.collection('lfas_menu')
+    // const menu = menus.doc('test_cloud_data_conn')
+    // console.log(this.data.menuOneDay.menuDate)
+    // const aa = util.formatTime(this.data.menuOneDay.menuDate, 'Y-M-D')
+    this.data.menuOneDay.menuList.sort(util.compare('menuType'))
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  changeDate(e) {
+    let chDate = e.detail.value
+    this.setData({ date: chDate });
   }
+
 })

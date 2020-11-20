@@ -1,2 +1,57 @@
-<!--miniprogram/pages/eat/eat.wxml-->
-<text>miniprogram/pages/eat/eat.wxml</text>
+<!--eat.wxml-->
+<view class="eat-container">
+
+  <!-- menu one day -->
+  <view class="menu-one-day">
+    <picker mode="date" value="{{date}}" bindchange="changeDate">
+      <view class="menu-one-day-pickdate">
+        日期: {{date}}
+      </view>
+    </picker>
+    <view class="menu-one-day-chef">
+      大厨: {{menuOneDay.chefMemberRole}}
+    </view>
+  </view>
+
+
+
+  <!-- menu tab -->
+  <view class="menu-tab">
+    <text>3_menu_tab</text>
+  </view>
+
+  <!-- menu -->
+  <view class="menu">
+    <view class="menu-operator">
+      <text>4_menu_time_people</text>
+      <button>5_random</button>
+      <button>9_add</button>
+    </view>
+    <view class="menu-container">
+      <view class="menu-container-meat">
+        <view class="tui-list-box">
+          <view class="tui-list-head">8_荤菜</view>
+          <view class="tui-gallery-list" wx:for="{{menuOneDay.menuList[0].menuMealList}}">
+            <image class="gallery-img tui-fl" src="{{item.meal_photo_path}}"></image>
+            <view class="gallery-box gallery-left">
+              <text class="gallery-name">{{item.meal_name}}</text>
+              <text class="gallery-detail">{{item.meal_weight_num}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="menu-container-vegetable">
+        <view class="tui-list-box">
+          <view class="tui-list-head">8.2_素菜</view>
+          <view class="tui-gallery-list" wx:for="{{menuOneDay.menuList[0].menuMealList}}">
+            <image class="gallery-img tui-fl" src="{{item.meal_photo_path}}"></image>
+            <view class="gallery-box gallery-left">
+              <text class="gallery-name">{{item.meal_name}}</text>
+              <text class="gallery-detail">{{item.meal_weight_num}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

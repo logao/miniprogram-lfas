@@ -1,1 +1,98 @@
 /* miniprogram/pages/eat/eat.wxss */
+.eat-container {
+  margin: 10px;
+  /* border: 1px solid #c8c7cc;
+  border-radius: 5px; */
+  overflow: hidden;
+}
+
+.menu-one-day {
+  line-height: 80rpx;
+  color: #555;
+  font-size: 35rpx;
+  padding: 0 0rpx 0 10px;
+  position: relative;
+}
+
+.menu-one-day-pickdate {
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #fff;
+  font-size: 35rpx;
+  margin: 0 10px;
+  overflow: hidden;
+  float: left;
+  border: 1px solid #c8c7cc;
+  width: 45%;
+  text-align: center;
+}
+
+.menu-one-day-chef {
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #fff;
+  font-size: 35rpx;
+  margin: 0 10px;
+  overflow: hidden;
+  border: 1px solid #c8c7cc;
+  width: 45%;
+  text-align: center;
+
+}
+
+
+/*图文列表样式  */
+.tui-list-box{border-top:1px solid #c8c7cc;}
+
+.tui-gallery-list{
+  color: #555;
+  font-size: 35rpx;
+  padding: 10px;
+  position: relative;
+}
+.tui-gallery-list:not(:last-child):before{
+  content: '';
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: #c8c7cc;
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+}
+.tui-list-head{
+  background-color: #efeff4;
+  line-height: 80rpx;
+  color: #6d6d72;
+  padding: 0 10px;
+  font-size: 35rpx;
+  border-bottom: 1px solid #c8c7cc;
+}
+
+.gallery-img{
+  width: 150rpx;
+  height: 90rpx;
+}
+.gallery-box{
+  height: 90rpx;
+  overflow: hidden;
+}
+.gallery-name{
+  display: block;
+  height: 50rpx;
+  line-height: 50rpx;
+  overflow: hidden;
+  font-size: 35rpx;
+}
+.gallery-detail{
+  display: block;
+  height: 40rpx;
+  line-height: 40rpx;
+  overflow: hidden;
+  font-size: 30rpx;
+  color: #8f8f94;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.gallery-left{padding-left: 10px;}
+.gallery-right{padding-right: 10px;}
