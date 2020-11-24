@@ -5,24 +5,14 @@ var util = require('../../utils/util.js');
 
 Page({
   data: {
+    mealTypeName: ['荤菜', '素菜', '主食'],
     menuOneDay: {
-      menuDate: new Date(),
+      menuDateTime: new Date(app.globalData.pickDate),
       chefMemberRole: '爷爷',
-      menuList: [
-        {
-          menuType: 0, menuTime: '07:00', dinnersNum: 3, menuMealList:
-            [{
-              meal_name: '狮子头', meal_photo_path: 'cloud://test-6gokn0pp1b7fd7cf.7465-test-6gokn0pp1b7fd7cf-1304259011/my-image.PNG', meal_desc: '', meal_weight_num: 100
-            }, {
-              meal_name: '狮子头', meal_photo_path: 'cloud://test-6gokn0pp1b7fd7cf.7465-test-6gokn0pp1b7fd7cf-1304259011/查找和替换2.png', meal_desc: '', meal_weight_num: 100
-            }
-            ]
-        },
-        { menuType: 1, menuTime: '11:30', dinnersNum: 4 },
-        { menuType: 2, menuTime: '06:30', dinnersNum: 4 }
-      ]
+      menuList: []
     },
-    date: util.formatTime(app.globalData.pickDate, 'Y-M-D')
+    date: util.formatTime(app.globalData.pickDate, 'Y-M-D'),
+    index: 0
   },
 
 
@@ -30,14 +20,57 @@ Page({
     // const db = wx.cloud.database()
     // const menus = db.collection('lfas_menu')
     // const menu = menus.doc('test_cloud_data_conn')
-    // console.log(this.data.menuOneDay.menuDate)
-    // const aa = util.formatTime(this.data.menuOneDay.menuDate, 'Y-M-D')
+    // console.log(this.data.menuOneDay.menuDateTime)
+    // const aa = util.formatTime(this.data.menuOneDay.menuDateTime, 'Y-M-D')
     this.data.menuOneDay.menuList.sort(util.compare('menuType'))
+
+    wx.cloud.callFunction({
+      name: 'getMenuOneDay',
+      data: {
+        pickDate: util.formatTime(new Date(), 'Y-M-D')
+      },
+      success: res => {
+        console.log(res.result.data)
+        this.data.menuOneDay.menuList = res.result.data
+        this.setData({ menuOneDay: this.data.menuOneDay })
+        wx.showToast({
+          title: '调用成功'
+        })
+      },
+      fail: err => {
+        wx.showToast({
+          icon: 'none',
+          title: '调用失败',
+        })
+        console.error('[云函数] [sum] 调用失败：', err)
+      }
+    })
   },
 
   changeDate(e) {
     let chDate = e.detail.value
     this.setData({ date: chDate });
+  },
+  changeTabbar(e) {
+    this.setData({ index: e.currentTarget.dataset.id })
+    console.log(this.data.index)
+  },
+  cloudTest(e) {
+    // 1. 获取数据库引用
+    const db = wx.cloud.database()
+    // 2. 构造查询语句
+    // collection 方法获取一个集合的引用
+    // where 方法传入一个对象，数据库返回集合中字段等于指定值的 JSON 文档。API 也支持高级的查询条件（比如大于、小于、in 等），具体见文档查看支持列表
+    // get 方法会触发网络请求，往数据库取数据
+    db.collection('lfas_menu').where({
+      publishInfo: {
+        country: 'United States'
+      }
+    }).get({
+      success: function (res) {
+        // 输出 [{ "title": "The Catcher in the Rye", ... }]
+        console.log(res)
+      }
+    })
   }
-
 })

@@ -10,7 +10,6 @@
   line-height: 80rpx;
   color: #555;
   font-size: 35rpx;
-  padding: 0 0rpx 0 10px;
   position: relative;
 }
 
@@ -40,17 +39,41 @@
 
 }
 
+.menu-operator {
+  display: flex;
+  color:#565454;
+}
+
+.btn1 {
+  width: 30%;
+  background-color: #ada7a7;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  margin-right: 10px;
+  font-weight: 600;
+  color: #1c1d1c;
+}
+
+.btn1::after {
+  border-radius: 98rpx;
+  border: 0; 
+}
 
 /*图文列表样式  */
-.tui-list-box{border-top:1px solid #c8c7cc;}
 
-.tui-gallery-list{
+.tui-gallery-list {
   color: #555;
   font-size: 35rpx;
   padding: 10px;
   position: relative;
+  height: 100rpx;
 }
-.tui-gallery-list:not(:last-child):before{
+
+.tui-gallery-list:not(:last-child):before {
   content: '';
   display: block;
   height: 1px;
@@ -60,7 +83,8 @@
   bottom: 0;
   left: 10px;
 }
-.tui-list-head{
+
+.tui-list-head {
   background-color: #efeff4;
   line-height: 80rpx;
   color: #6d6d72;
@@ -69,22 +93,25 @@
   border-bottom: 1px solid #c8c7cc;
 }
 
-.gallery-img{
+.gallery-img {
   width: 150rpx;
   height: 90rpx;
 }
-.gallery-box{
+
+.gallery-box {
   height: 90rpx;
   overflow: hidden;
 }
-.gallery-name{
+
+.gallery-name {
   display: block;
   height: 50rpx;
   line-height: 50rpx;
   overflow: hidden;
   font-size: 35rpx;
 }
-.gallery-detail{
+
+.gallery-detail {
   display: block;
   height: 40rpx;
   line-height: 40rpx;
@@ -94,5 +121,123 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.gallery-left{padding-left: 10px;}
-.gallery-right{padding-right: 10px;}
+
+.gallery-left {
+  padding-left: 10px;
+  float: left;
+}
+
+.gallery-right {
+  padding-right: 10px;
+}
+
+/*tabbar style  */
+.tui-tabbar-content {
+  padding: 10px;
+}
+
+.tui-tabbar-group {
+  border: 1px solid #4cd964;
+  border-radius: 3px;
+  overflow: hidden;
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+  color: #4cd964;
+}
+
+.tui-tabbar-cell {
+  display: table-cell;
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 35rpx;
+  text-align: center;
+}
+
+.tui-tabbar-cell:not(:last-child) {
+  border-right: 1px solid #4cd964;
+}
+
+.tui-tabbar-cell.tui-active {
+  background-color: #4cd964;
+  color: #fff;
+}
+
+.tui-list-box {
+  border-bottom: 1px solid #c8c7cc;
+  background-color: #fff;
+}
+
+.tui-show {
+  display: block;
+}
+
+.tui-hide {
+  display: none;
+}
+
+
+/*文字列表样式  */
+
+.tui-menu-list {
+  line-height: 80rpx;
+  color: #555;
+  font-size: 35rpx;
+  padding: 0 0rpx 0 10px;
+  position: relative;
+}
+
+.tui-menu-list:before {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: #c8c7cc;
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+}
+
+.tui-menu-list:last-child:before {
+  height: 0;
+}
+
+.tui-youjiantou:after {
+  font-family: "iconfont" !important;
+  content: '\e735';
+  font-size: 40rpx;
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-decoration: none;
+  right: 10rpx;
+}
+
+.tui-xiajiantou:after {
+  font-family: "iconfont" !important;
+  content: '\e733';
+  font-size: 40rpx;
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-decoration: none;
+  right: 10rpx;
+}
+
+.tui-shangjiantou:after {
+  font-family: "iconfont" !important;
+  content: '\e734';
+  font-size: 40rpx;
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-decoration: none;
+  right: 10rpx;
+}
