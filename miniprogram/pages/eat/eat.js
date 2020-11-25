@@ -30,8 +30,8 @@ Page({
         pickDate: util.formatTime(new Date(), 'Y-M-D')
       },
       success: res => {
-        console.log(res.result.data)
-        this.data.menuOneDay.menuList = res.result.data
+        console.log(res.result)
+        this.data.menuOneDay.menuList = res.result
         this.setData({ menuOneDay: this.data.menuOneDay })
         wx.showToast({
           title: '调用成功'

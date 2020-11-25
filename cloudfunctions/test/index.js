@@ -13,9 +13,9 @@ exports.main = async (event, context) => {
 
   const countResult = await db.collection('lfas_menu').where({
     menuDateTime: _.gte(new Date(pickDate + ' 00:00:00')).and(_.lte(new Date(pickDate + ' 23:59:59')))
-  }).count()
+  }).get()
 
-  console.log(countResult.total)
+  console.log(countResult.data.length)
 
 
   return {
