@@ -32,7 +32,7 @@
         {{menu.menuTime}} {{menu.dinersNum}}人吃饭
       </view>
       <view class="btn1" catchtap="randomMenuList">随机来一顿</view>
-      <view class="btn1">加菜</view>
+      <view class="btn1" catchtap="addMeal">加菜</view>
     </view>
 
     <view class="menu-container">
@@ -45,11 +45,8 @@
               <text class="gallery-name">{{meal.mealName}}</text>
               <text class="gallery-detail">分数：{{meal.mealWeightNum}}</text>
             </view>
-            <icon type="clear" size="30" class="tui-fr" catchtap="clearMeal" 
-              data-clear-menu-id="{{menu._id}}"
-              data-clear-meal-type="{{meal.mealType}}" 
-              data-clear-meal-id="{{meal._id}}" 
-            />
+            <icon type="clear" size="30" class="tui-fr" catchtap="clearMeal" data-clear-menu-id="{{menu._id}}"
+              data-clear-meal-type="{{meal.mealType}}" data-clear-meal-id="{{meal._id}}" />
             <icon type="search" size="30" class="tui-fr" />
           </view>
         </view>

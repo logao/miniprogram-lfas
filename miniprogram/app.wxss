@@ -28,3 +28,99 @@ page {
 
 .tui-fl{float: left;}
 .tui-fr{float: right;}
+
+
+/*tabbar style  */
+.tui-tabbar-content {
+  padding: 10px;
+}
+
+.tui-tabbar-group {
+  border: 1px solid #4cd964;
+  border-radius: 3px;
+  overflow: hidden;
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+  color: #4cd964;
+}
+
+.tui-tabbar-cell {
+  display: table-cell;
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 35rpx;
+  text-align: center;
+}
+
+.tui-tabbar-cell:not(:last-child) {
+  border-right: 1px solid #4cd964;
+}
+
+.tui-tabbar-cell.tui-active {
+  background-color: #4cd964;
+  color: #fff;
+}
+
+
+/*图文列表样式  */
+
+.tui-gallery-list {
+  color: #555;
+  font-size: 35rpx;
+  padding: 10px;
+  position: relative;
+  height: 100rpx;
+}
+
+.tui-gallery-list:not(:last-child):before {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: #c8c7cc;
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+}
+
+
+
+.gallery-img {
+  width: 150rpx;
+  height: 90rpx;
+}
+
+.gallery-box {
+  height: 90rpx;
+  overflow: hidden;
+}
+
+.gallery-name {
+  display: block;
+  height: 50rpx;
+  line-height: 50rpx;
+  overflow: hidden;
+  font-size: 35rpx;
+}
+
+.gallery-detail {
+  display: block;
+  height: 40rpx;
+  line-height: 40rpx;
+  overflow: hidden;
+  font-size: 30rpx;
+  color: #8f8f94;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.gallery-left {
+  padding-left: 10px;
+  float: left;
+}
+
+.gallery-right {
+  padding-right: 10px;
+}

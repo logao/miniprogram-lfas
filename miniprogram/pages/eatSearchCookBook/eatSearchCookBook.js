@@ -1,66 +1,61 @@
 // miniprogram/pages/eatSearchCookBook/eatSearchCookBook.js
+const db = wx.cloud.database()
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    mealType: 0,
+    mealList: []
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  onShow: function (options) {
+    var mealType = this.data.mealType
+    // this.updateMealList(mealType)
+    const that = this
 
+    db.collection('lfas_meal').where({
+      mealType: mealType
+    }).get({
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          mealList: res.data
+        })
+        that.data.mealList = res.data
+        that.data.mealType = mealType
+      },
+      fail: function (res) {
+        console.log(res)
+      }
+    })
   },
+  changeTabbar(e) {
+    var tmpMealType = e.currentTarget.dataset.id
+    this.setData({ mealType: tmpMealType })
+    console.log('changeTabBar')
+    const that = this
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+    console.log(tmpMealType)
+    db.collection('lfas_meal').where({
+      mealType: tmpMealType
+    }).get({
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          mealList: res.data
+        })
+        that.data.mealList = res.data
+        that.data.mealType = mealType
+      },
+      fail: function (res) {
+        console.log(res)
+      }
+    })
   },
+  updateMealList(mealType) {
+    console.log('run_updateMealList')
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
+
+
 })

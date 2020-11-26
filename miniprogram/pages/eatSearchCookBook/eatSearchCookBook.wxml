@@ -1,2 +1,23 @@
 <!--miniprogram/pages/eatSearchCookBook/eatSearchCookBook.wxml-->
-<text>miniprogram/pages/eatSearchCookBook/eatSearchCookBook.wxml</text>
+<view class="eatSearchCookBook-container">
+
+  <!-- menu tab -->
+  <view class="tui-tabbar-content">
+    <view class="tui-tabbar-group">
+      <text data-id="0" bindtap="changeTabbar" class="tui-tabbar-cell {{mealType == 0 ? 'tui-active' : ''}}">荤菜</text>
+      <text data-id="1" bindtap="changeTabbar" class="tui-tabbar-cell {{mealType == 1 ? 'tui-active' : ''}}">素材</text>
+      <text data-id="2" bindtap="changeTabbar" class="tui-tabbar-cell {{mealType == 2 ? 'tui-active' : ''}}">主食</text>
+    </view>
+  </view>
+
+  <!-- meal list -->
+  <view class="tui-gallery-list" wx:for="{{mealList}}" wx:for-item="meal">
+    <image class="gallery-img tui-fl" src="{{meal.mealPhotoPath}}"></image>
+    <view class="gallery-box gallery-left">
+      <text class="gallery-name">{{meal.mealName}}</text>
+      <text class="gallery-detail">分数：{{meal.mealWeightNum}}</text>
+    </view>
+    <icon type="success" size="30" class="tui-fr" catchtap="clearMeal" data-clear-menu-id="{{menu._id}}"
+      data-clear-meal-type="{{meal.mealType}}" data-clear-meal-id="{{meal._id}}" />
+  </view>
+</view>
