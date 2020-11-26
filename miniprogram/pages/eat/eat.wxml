@@ -3,9 +3,9 @@
 
   <!-- menu one day -->
   <view class="menu-one-day">
-    <picker mode="date" value="{{date}}" bindchange="changeDate">
+    <picker mode="date" value="{{pickDate}}" bindchange="changePickDate">
       <view class="menu-one-day-pickdate">
-        日期: {{date}}
+        日期: {{pickDate}}
       </view>
     </picker>
     <view class="menu-one-day-chef">
@@ -26,45 +26,35 @@
 
 
   <!-- menu -->
-  <view class="menu" wx:for="{{menuOneDay.menuList}}" wx:for-index="i">
+  <view class="menu" wx:for="{{menuOneDay.menuList}}" wx:for-index="i" wx:for-item="menu">
     <view class="menu-operator {{index == i ? '' : 'tui-hide'}}">
       <view class="menu-one-day-pickdate">
-        {{item.menuTime}} {{item.dinersNum}}人吃饭
+        {{menu.menuTime}} {{menu.dinersNum}}人吃饭
       </view>
-      <view class="btn1">随机来一顿</view>
+      <view class="btn1" catchtap="randomMenuList">随机来一顿</view>
       <view class="btn1">加菜</view>
     </view>
 
     <view class="menu-container">
       <view class="menu-container-meat {{index == i ? '' : 'tui-hide'}}">
-        <view class="tui-list-box" wx:for="{{item.menuMealList}}" wx:for-item="mlst">
-          <view class="tui-list-head">{{mealTypeName[mlst.mealType]}}</view>
-          <view class="tui-gallery-list" wx:for="{{mlst.mealList}}" wx:for-item="ml">
-            <image class="gallery-img tui-fl" src="{{ml.meal_photo_path}}"></image>
+        <view class="tui-list-box" wx:for="{{menu.menuMealList}}" wx:for-item="menuMealType">
+          <view class="tui-list-head">{{mealTypeName[menuMealType.mealType]}}</view>
+          <view class="tui-gallery-list" wx:for="{{menuMealType.mealList}}" wx:for-item="meal">
+            <image class="gallery-img tui-fl" src="{{meal.mealPhotoPath}}"></image>
             <view class="gallery-box gallery-left">
-              <text class="gallery-name">{{ml.meal_name}}</text>
-              <text class="gallery-detail">分数：{{ml.meal_weight_num}}</text>
+              <text class="gallery-name">{{meal.mealName}}</text>
+              <text class="gallery-detail">分数：{{meal.mealWeightNum}}</text>
             </view>
-            <icon type="clear" size="30" class="tui-fr" />
+            <icon type="clear" size="30" class="tui-fr" catchtap="clearMeal" 
+              data-clear-menu-id="{{menu._id}}"
+              data-clear-meal-type="{{meal.mealType}}" 
+              data-clear-meal-id="{{meal._id}}" 
+            />
             <icon type="search" size="30" class="tui-fr" />
           </view>
         </view>
       </view>
 
-
-
-      <!-- <view class="menu-container-vegetable {{index == 1 ? '' : 'tui-hide'}}">
-        <view class="tui-list-box">
-          <view class="tui-list-head">8.2_素菜</view>
-          <view class="tui-gallery-list" wx:for="{{menuOneDay.menuList[0].menuMealList}}">
-            <image class="gallery-img tui-fl" src="{{item.meal_photo_path}}"></image>
-            <view class="gallery-box gallery-left">
-              <text class="gallery-name">{{item.meal_name}}</text>
-              <text class="gallery-detail">{{item.meal_weight_num}}</text>
-            </view>
-          </view>
-        </view>
-      </view> -->
     </view>
   </view>
 </view>

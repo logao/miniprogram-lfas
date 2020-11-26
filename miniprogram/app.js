@@ -16,7 +16,7 @@ App({
     }
 
     this.globalData = {
-      pickDate: new Date()
+      pickDateTime: new Date()
     }
   }
 })
