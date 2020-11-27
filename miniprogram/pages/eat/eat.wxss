@@ -16,7 +16,7 @@
 .menu-one-day-pickdate {
   height: 80rpx;
   line-height: 80rpx;
-  background-color: #fff;
+  background-color: #4cd964;
   font-size: 35rpx;
   margin: 0 10px;
   overflow: hidden;
@@ -24,6 +24,8 @@
   border: 1px solid #c8c7cc;
   width: 45%;
   text-align: center;
+  color: #fff;
+  border-radius: 3px;
 }
 
 .menu-one-day-chef {
@@ -44,18 +46,30 @@
   color:#565454;
 }
 
+.menu-operator-menutime {
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #fff;
+  font-size: 35rpx;
+  margin: 0 10px;
+  overflow: hidden;
+  float: left;
+  border: 1px solid #c8c7cc;
+  width: 45%;
+  text-align: center;
+}
+
 .btn1 {
   width: 30%;
-  background-color: #ada7a7;
-  border-radius: 10rpx;
+  background-color: #4cd964;
+  border-radius: 3px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: 30rpx;
+  font-size: 35rpx;
   margin-right: 10px;
-  font-weight: 600;
-  color: #1c1d1c;
+  color: #fff;
 }
 
 .btn1::after {

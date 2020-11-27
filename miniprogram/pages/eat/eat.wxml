@@ -28,11 +28,11 @@
   <!-- menu -->
   <view class="menu" wx:for="{{menuOneDay.menuList}}" wx:for-index="i" wx:for-item="menu">
     <view class="menu-operator {{index == i ? '' : 'tui-hide'}}">
-      <view class="menu-one-day-pickdate">
+      <view class="menu-operator-menutime">
         {{menu.menuTime}} {{menu.dinersNum}}人吃饭
       </view>
-      <view class="btn1" catchtap="randomMenuList">随机来一顿</view>
-      <view class="btn1" catchtap="addMeal">加菜</view>
+      <view class="btn1" catchtap="randomMenuList">重选</view>
+      <view class="btn1" catchtap="addMeal" data-menu-id="{{menu._id}}">加菜</view>
     </view>
 
     <view class="menu-container">

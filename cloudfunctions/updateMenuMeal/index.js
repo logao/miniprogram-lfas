@@ -12,7 +12,7 @@ exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
 
   // step1: 初始化参数
-
+  const operation = event.operation
   const menuId = event.menuId
   const mealId = event.mealId
   const mealType = event.mealType
@@ -20,15 +20,21 @@ exports.main = async (event, context) => {
   const queryResult = await db.collection('lfas_menu').doc(menuId).get()
 
   const menu = queryResult.data
-  const mealIndex = menu.menuMealList[mealType].mealList.findIndex(meal => meal._id == mealId)
 
-  console.log(menu)
-  menu.menuMealList[mealType].mealList.splice(mealIndex, 1)
-  console.log(menu)
+  if (operation == 'delete') {
+    const mealIndex = menu.menuMealList[mealType].mealList.findIndex(meal => meal._id == mealId)
+    menu.menuMealList[mealType].mealList.splice(mealIndex, 1)
+  } else if (operation == 'add') {
+    const mealQuery = await db.collection('lfas_meal').doc(mealId).get()
+    menu.menuMealList[mealType].mealList.push(mealQuery.data)
+  }
+
+  // last step: update lfas_menu
   db.collection('lfas_menu').doc(menuId).update({
-    data:{
+    data: {
       menuMealList: menu.menuMealList
     }
   })
+
 
 }
