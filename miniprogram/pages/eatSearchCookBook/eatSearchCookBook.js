@@ -50,7 +50,6 @@ Page({
   },
 
   updateMealList() {
-    console.log('run_updateMealList')
     const that = this
     const mealType = this.data.mealType
     const mealList = this.data.mealTypeList[mealType]

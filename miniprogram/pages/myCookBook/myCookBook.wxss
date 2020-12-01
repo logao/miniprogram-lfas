@@ -1,0 +1,11 @@
+/* pages/myCookBook/myCookBook.wxss */
+
+.myCookBook-ctrl-radio:not(:last-child) {
+  float: left;
+  margin-right: 20rpx;
+}
+
+.radio-group {
+  width: 50%;
+  margin-left:15%;
+}

@@ -47,7 +47,6 @@
             </view>
             <icon type="clear" size="30" class="tui-fr" catchtap="clearMeal" data-clear-menu-id="{{menu._id}}"
               data-clear-meal-type="{{meal.mealType}}" data-clear-meal-id="{{meal._id}}" />
-            <icon type="search" size="30" class="tui-fr" />
           </view>
         </view>
       </view>

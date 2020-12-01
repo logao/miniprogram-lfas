@@ -1,5 +1,16 @@
-<!--miniprogram/pages/eatSearchCookBook/eatSearchCookBook.wxml-->
-<view class="eatSearchCookBook-container">
+<!--pages/myCookBook/myCookBook.wxml-->
+<view class="myCookBook-container">
+
+  <view class="myCookBook-ctrl">
+    <radio-group class="radio-group tui-fl" bindchange="radioChange">
+      <label class="radio myCookBook-ctrl-radio" wx:for="{{isBreakFirstRatio}}">
+        <view class="tui-menu-list">
+          <radio color="#007aff" value="{{item.value}}" checked="{{item.checked}}" />{{item.name}}</view>
+      </label>
+    </radio-group>
+    
+    <view class="btn1" catchtap="cookBookAddMeal">加菜</view>
+  </view>
 
   <!-- menu tab -->
   <view class="tui-tabbar-content">
@@ -17,7 +28,8 @@
       <text class="gallery-name">{{meal.mealName}}</text>
       <text class="gallery-detail">分数：{{meal.mealWeightNum}}</text>
     </view>
-    <icon type="success" size="30" class="tui-fr" catchtap="chooseOneMeal" data-meal-type="{{meal.mealType}}"
+    <icon type="clear" size="30" class="tui-fr" catchtap="cookBookCleadOneMeal" data-meal-type="{{meal.mealType}}"
       data-meal-id="{{meal._id}}" />
   </view>
+
 </view>

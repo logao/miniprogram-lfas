@@ -1,0 +1,12 @@
+/* miniprogram/pages/cookBookMealDetail/cookBookMealDetail.wxss */
+
+.tui-input-name{
+  height: 80rpx;
+  float: left;
+  width: 200rpx;
+}
+
+.tui-accordion-from input{
+  height: 80rpx;
+  line-height: 80rpx;
+}

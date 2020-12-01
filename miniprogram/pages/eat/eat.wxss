@@ -59,23 +59,6 @@
   text-align: center;
 }
 
-.btn1 {
-  width: 30%;
-  background-color: #4cd964;
-  border-radius: 3px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-size: 35rpx;
-  margin-right: 10px;
-  color: #fff;
-}
-
-.btn1::after {
-  border-radius: 98rpx;
-  border: 0; 
-}
 
 
 /*图文列表样式  */
