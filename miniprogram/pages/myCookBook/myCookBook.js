@@ -17,22 +17,41 @@ Page({
     this.updateMealList()
   },
 
-  onReady: function () {
-
-  },
-
-  onShow: function () {
-
-  },
-
   cookBookAddMeal() {
-    // todo
+    const self = this
+    wx.navigateTo({
+      url: '/pages/cookBookMealDetail/cookBookMealDetail',
+      success(res) {
+        res.eventChannel.emit('cookBookAddMeal', {
+          data: {
+            operation: 'add'
+          }
+        })
+      }
+    })
   },
-  changeTabbar(){
-    // todo
+  changeTabbar(e) {
+    this.data.mealType = parseInt(e.currentTarget.dataset.id) // 赋值后记录会变成 string
+    console.log(this.data.mealType)
+    this.updateMealList()
   },
-  cookBookCleadOneMeal(){
+  cookBookCleaOneMeal(e) {
     // todo
+    const mealId = e.currentTarget.dataset.mealId
+    const mealType = this.data.mealType
+    const mealList = this.data.mealTypeList[mealType]
+
+    const mealIndex = mealList.findIndex(meal => meal._id == mealId)
+    mealList.splice(mealIndex, 1)[0]
+    this.setData({ mealList: mealList })
+    wx.cloud.callFunction({// 删除 数据库中 存储的 meal
+      name: 'crudMeal',
+      data: {
+        operation: 'delete',
+        mealId: mealId
+      }
+    })
+
   },
 
   updateMealList() {

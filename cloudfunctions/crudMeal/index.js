@@ -13,9 +13,10 @@ exports.main = async (event, context) => {
 
   // step1: 初始化参数
   const operation = event.operation
-  const meal = event.meal
+
 
   if (operation == 'add') {
+    const meal = event.meal
     db.collection('lfas_meal').add({
       data: {
         mealType: meal.mealType,
@@ -30,7 +31,11 @@ exports.main = async (event, context) => {
         console.log(res)
       }
     })
-  } else if (operation == 'update') {
+  } else if (operation == 'delete') {
+    const mealId = event.mealId
+    db.collection('lfas_meal').doc(mealId).remove()
+  }
+  else if (operation == 'update') {
     // todo
 
     // const mealQuery = await db.collection('lfas_meal').doc(mealId).get()

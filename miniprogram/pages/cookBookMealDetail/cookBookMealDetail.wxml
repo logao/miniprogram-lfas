@@ -3,51 +3,51 @@
     <image class="cookBookMealDetail-img" src="{{localMealPhotoPath}}" catchtap="choosePhoto" />
   </view>
 
-  <form bindsubmit="formSubmit">
-    <view class="cookBookMealDetail-form">
-      <view class="tui-menu-list">
-        <text class="tui-fl">菜名:</text>
-        <input name="mealName" placeholder="填写菜名..." class="cookBookMealDetail-name-input"
-          placeholder-class="cookBookMealDetail-name-input-placeholder" bindinput="inputMealName" />
-      </view>
-      <view class="tui-menu-list">
-        <text class="tui-fl" style="margin-right:60rpx;">早餐:</text>
-        <switch class="cookBookMealDetail-isBreakfirst-switch" name="isBreakfirst" checked="{{isChecked1}}" />
-      </view>
-      <view class="tui-menu-list">
-        <text class="tui-fl" style="margin-right:40rpx;">类型:</text>
-        <radio-group name="mealType" class="cookBookMealDetail-mealType-radio-group" bindchange="radioChange">
-          <label class="cookBookMealDetail-mealType-radio" wx:for="{{mealTypeRadio}}">
-            <view class="tui-menu-list">
-              <radio color="#007aff" value="{{item.value}}" checked="{{item.checked}}" />{{item.name}}
-            </view>
-          </label>
-        </radio-group>
-      </view>
-      <view class="tui-menu-list" style="height:86rpx">
-        <text class="tui-fl" style="margin-right:60rpx;">分数:</text>
-        <text class="tui-fl" style="margin-right:30rpx;">{{mealWeightNum}}</text>
-        <!-- <view class="tui-number-group"> -->
-        <button class="cookBookMealDetail-weightNum-button" bindtap="mealWeightNumNextNum" size="mini"
-          style="width: 100rpx;" disabled='{{disabled1}}'>-</button>
-        <!-- <input class="tui-number-cell" type="text" value='{{mealWeightNum}}'
+  <!-- <form bindsubmit="formSubmit"> -->
+  <view class="cookBookMealDetail-form">
+    <view class="tui-menu-list">
+      <text class="tui-fl">菜名:</text>
+      <input name="mealName" placeholder="填写菜名..." class="cookBookMealDetail-name-input"
+        placeholder-class="cookBookMealDetail-name-input-placeholder" bindinput="inputMealName" />
+    </view>
+    <view class="tui-menu-list">
+      <text class="tui-fl" style="margin-right:60rpx;">早餐:</text>
+      <switch class="cookBookMealDetail-isBreakfirst-switch" name="isBreakfirst" checked="{{isChecked1}}"
+        bindchange="isBreakfirstChange" />
+    </view>
+    <view class="tui-menu-list">
+      <text class="tui-fl" style="margin-right:40rpx;">类型:</text>
+      <radio-group name="mealType" class="cookBookMealDetail-mealType-radio-group" bindchange="mealTypeChange">
+        <label class="cookBookMealDetail-mealType-radio" wx:for="{{mealTypeRadio}}">
+          <view class="tui-menu-list">
+            <radio color="#007aff" value="{{item.value}}" checked="{{mealType == item.value ? true : false}}" />
+            {{item.name}}
+          </view>
+        </label>
+      </radio-group>
+    </view>
+    <view class="tui-menu-list" style="height:86rpx">
+      <text class="tui-fl" style="margin-right:60rpx;">分数:</text>
+      <text class="tui-fl" style="margin-right:30rpx;">{{mealWeightNum}}</text>
+      <!-- <view class="tui-number-group"> -->
+      <button class="cookBookMealDetail-weightNum-button" bindtap="mealWeightNumNextNum" size="mini"
+        style="width: 100rpx;" disabled='{{disabled1}}'>-</button>
+      <!-- <input class="tui-number-cell" type="text" value='{{mealWeightNum}}'
             style='align-items:center;height:30px;line-height:30px;' selection-start="-1"
             selection-end="-1" cursor="-1" /> -->
-        <!-- <text style="width:100rpx; display:inline-block; font-size:16px; padding-top:35rpx">{{mealWeightNum}}</text> -->
-        <button class="cookBookMealDetail-weightNum-button" bindtap="mealWeightNumPreNum" size="mini"
-          style="width: 100rpx;" disabled='{{disabled2}}'>+</button>
-        <!-- </view> -->
-      </view>
-
-      <view class="tui-menu-list">
-        <text>备注：</text>
-        <textarea class="cookBookMealDetail-mealDesc-textarea" bindinput="inputMealDesc" auto-height="true" />
-        </view>
-
-      <button class="weui-btn" style='margin:5px;' type="primary" form-type="submit">
-        <view wx:if="{{operation=='add'}}">加菜</view>
-        <view wx:if="{{operation=='edit'}}">更新</view>
-      </button>
+      <!-- <text style="width:100rpx; display:inline-block; font-size:16px; padding-top:35rpx">{{mealWeightNum}}</text> -->
+      <button class="cookBookMealDetail-weightNum-button" bindtap="mealWeightNumPreNum" size="mini"
+        style="width: 100rpx;" disabled='{{disabled2}}'>+</button>
+      <!-- </view> -->
     </view>
-  </form>
+
+    <view class="tui-menu-list">
+      <text>备注：</text>
+      <textarea class="cookBookMealDetail-mealDesc-textarea" bindinput="inputMealDesc" auto-height="true" />
+      </view>
+    </view>
+    <button class="cookBookMealDetail-submit" style='margin:5px;' type="primary" bindtap="mealSubmit">
+        <text wx:if="{{operation=='add'}}">加菜</text>
+        <text wx:if="{{operation=='edit'}}">更新</text>
+      </button>
 </view>

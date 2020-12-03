@@ -28,7 +28,7 @@
       <text class="gallery-name">{{meal.mealName}}</text>
       <text class="gallery-detail">分数：{{meal.mealWeightNum}}</text>
     </view>
-    <icon type="clear" size="30" class="tui-fr" catchtap="cookBookCleadOneMeal" data-meal-type="{{meal.mealType}}"
+    <icon type="clear" size="30" class="tui-fr" catchtap="cookBookCleaOneMeal" data-meal-type="{{meal.mealType}}"
       data-meal-id="{{meal._id}}" />
   </view>
 
