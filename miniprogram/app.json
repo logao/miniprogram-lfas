@@ -1,5 +1,6 @@
 {
   "pages": [
+   
     "pages/cookBookMealDetail/cookBookMealDetail",
     "pages/eat/eat",
     "pages/myCookBook/myCookBook"

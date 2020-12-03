@@ -1,12 +1,92 @@
 /* miniprogram/pages/cookBookMealDetail/cookBookMealDetail.wxss */
 
-.tui-input-name{
+.cookBookMealDetail-container {}
+
+.cookBookMealDetail-img-container {
+  margin: 0 20rpx 30rpx 20rpx;
+  border: 1px solid #c8c7cc;
+  border-radius: 4rpx;
+}
+
+.cookBookMealDetail-img {
+  width: 100%;
+  height: 500rpx;
+}
+
+.cookBookMealDetail-form {
+  background-color: white;
+  border-top: 1px solid #c8c7cc;
+  border-bottom: 1px solid #c8c7cc;
+}
+
+.cookBookMealDetail-isBreakfirst-switch {
+  margin-right: 20rpx;
+}
+
+.cookBookMealDetail-mealType-radio-group {
+  display: flex;
+}
+
+.cookBookMealDetail-mealType-radio {
+  margin: 0 5rpx;
+}
+
+.cookBookMealDetail-name-input-placeholder {
+  color: #d2d1d6;
+}
+
+.cookBookMealDetail-name-input {
+  padding-left: 60rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.cookBookMealDetail-weightNum-button {
+  background-color: #f8f8f8;
+  margin-top:10rpx;
+  margin-left: 30rpx;
+}
+
+.cookBookMealDetail-mealDesc-textarea {
+  width: 670rpx;
+  padding: 25rpx 20rpx;
+  background: #EEE;
+  height: 40px;
+  font-size: 16px;
+  line-height: 16px;
+  min-height:32px;
+}
+
+.tui-number-group {
+  margin: 20rpx 0;
+  line-height: 0;
+  display: flex;
+  width: 300rpx;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+  overflow: hidden;
+}
+
+.tui-number-cell {
+  display: table-cell;
+  line-height: 1.7;
+  border-radius: 0;
+}
+
+button::after {
+  border-bottom: none;
+  border-top: none;
+  border-radius: 0;
+}
+
+.tui-input-name {
   height: 80rpx;
   float: left;
   width: 200rpx;
 }
 
-.tui-accordion-from input{
+.tui-accordion-from input {
   height: 80rpx;
   line-height: 80rpx;
 }

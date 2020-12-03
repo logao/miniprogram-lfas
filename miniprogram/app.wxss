@@ -153,7 +153,7 @@ page {
   line-height: 80rpx;
   color: #555;
   font-size: 35rpx;
-  padding: 0 0rpx 0 10px;
+  padding: 0 0rpx 5rpx 10px;
   position: relative;
 }
 .tui-menu-list:before{
