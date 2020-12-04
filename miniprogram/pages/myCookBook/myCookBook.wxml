@@ -2,13 +2,14 @@
 <view class="myCookBook-container">
 
   <view class="myCookBook-ctrl">
-    <radio-group class="radio-group tui-fl" bindchange="radioChange">
-      <label class="radio myCookBook-ctrl-radio" wx:for="{{isBreakFirstRatio}}">
+    <radio-group class="radio-group tui-fl" bindtap="isBreakfirstRadioChange">
+      <label class="radio myCookBook-ctrl-radio" wx:for="{{isBreakfirstRatio}}">
         <view class="tui-menu-list">
-          <radio color="#007aff" value="{{item.value}}" checked="{{item.checked}}" />{{item.name}}</view>
+          <radio color="#007aff" value="{{item.value}}" checked="{{isBreakfirst == item.value ? true : false}}" />
+          {{item.name}}</view>
       </label>
     </radio-group>
-    
+
     <view class="btn1" catchtap="cookBookAddMeal">加菜</view>
   </view>
 
@@ -22,11 +23,13 @@
   </view>
 
   <!-- meal list -->
-  <view class="tui-gallery-list" wx:for="{{mealList}}" wx:for-item="meal">
-    <image class="gallery-img tui-fl" src="{{meal.mealPhotoPath}}"></image>
-    <view class="gallery-box gallery-left">
-      <text class="gallery-name">{{meal.mealName}}</text>
-      <text class="gallery-detail">分数：{{meal.mealWeightNum}}</text>
+  <view class="tui-gallery-list" wx:for="{{mealListShow}}" wx:for-item="meal">
+    <view catchtap="cookBookEditMeal" data-meal-type="{{meal.mealType}}" data-meal-id="{{meal._id}}">
+      <image class="gallery-img tui-fl" src="{{meal.mealPhotoPath}}"></image>
+      <view class="gallery-box gallery-left">
+        <text class="gallery-name">{{meal.mealName}}</text>
+        <text class="gallery-detail">分数：{{meal.mealWeightNum}}</text>
+      </view>
     </view>
     <icon type="clear" size="30" class="tui-fr" catchtap="cookBookCleaOneMeal" data-meal-type="{{meal.mealType}}"
       data-meal-id="{{meal._id}}" />

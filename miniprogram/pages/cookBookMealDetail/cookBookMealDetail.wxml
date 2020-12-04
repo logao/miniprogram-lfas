@@ -7,12 +7,12 @@
   <view class="cookBookMealDetail-form">
     <view class="tui-menu-list">
       <text class="tui-fl">菜名:</text>
-      <input name="mealName" placeholder="填写菜名..." class="cookBookMealDetail-name-input"
+      <input value="{{meal.mealName}}" placeholder="填写菜名..." class="cookBookMealDetail-name-input"
         placeholder-class="cookBookMealDetail-name-input-placeholder" bindinput="inputMealName" />
     </view>
     <view class="tui-menu-list">
       <text class="tui-fl" style="margin-right:60rpx;">早餐:</text>
-      <switch class="cookBookMealDetail-isBreakfirst-switch" name="isBreakfirst" checked="{{isChecked1}}"
+      <switch class="cookBookMealDetail-isBreakfirst-switch" name="isBreakfirst" checked="{{meal.isBreakfirst}}"
         bindchange="isBreakfirstChange" />
     </view>
     <view class="tui-menu-list">
@@ -20,7 +20,7 @@
       <radio-group name="mealType" class="cookBookMealDetail-mealType-radio-group" bindchange="mealTypeChange">
         <label class="cookBookMealDetail-mealType-radio" wx:for="{{mealTypeRadio}}">
           <view class="tui-menu-list">
-            <radio color="#007aff" value="{{item.value}}" checked="{{mealType == item.value ? true : false}}" />
+            <radio color="#007aff" value="{{item.value}}" checked="{{meal.mealType == item.value ? true : false}}" />
             {{item.name}}
           </view>
         </label>
@@ -28,7 +28,7 @@
     </view>
     <view class="tui-menu-list" style="height:86rpx">
       <text class="tui-fl" style="margin-right:60rpx;">分数:</text>
-      <text class="tui-fl" style="margin-right:30rpx;">{{mealWeightNum}}</text>
+      <text class="tui-fl" style="margin-right:30rpx;">{{meal.mealWeightNum}}</text>
       <!-- <view class="tui-number-group"> -->
       <button class="cookBookMealDetail-weightNum-button" bindtap="mealWeightNumNextNum" size="mini"
         style="width: 100rpx;" disabled='{{disabled1}}'>-</button>
@@ -43,7 +43,7 @@
 
     <view class="tui-menu-list">
       <text>备注：</text>
-      <textarea class="cookBookMealDetail-mealDesc-textarea" bindinput="inputMealDesc" auto-height="true" />
+      <textarea value="{{meal.mealDesc}}" class="cookBookMealDetail-mealDesc-textarea" bindinput="inputMealDesc" auto-height="true" />
       </view>
     </view>
     <button class="cookBookMealDetail-submit" style='margin:5px;' type="primary" bindtap="mealSubmit">

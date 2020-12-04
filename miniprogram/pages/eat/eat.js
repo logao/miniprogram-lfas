@@ -29,13 +29,13 @@ Page({
   },
   changeTabbar(e) {
     this.setData({ index: e.currentTarget.dataset.id })
-    console.log(this.data.index)
+    // console.log(this.data.index)
   },
 
 
   randomMenuList(e) {
     this.getMenuOneDay(util.formatTime(app.globalData.pickDateTime, 'Y-M-D'), true)
-    console.log('random')
+    // console.log('random')
   },
 
   addMeal(e) {
@@ -99,8 +99,12 @@ Page({
   },
 
   getMenuOneDay(pickDate, doDelete) {
-    console.log("pickDate: " + pickDate)
-    console.log("doDelete: " + doDelete || false)
+    // console.log("pickDate: " + pickDate)
+    // console.log("doDelete: " + doDelete || false)
+    
+    wx.showLoading({
+      title: '更新中',
+    })
 
     wx.cloud.callFunction({
       name: 'getMenuOneDay',
@@ -109,13 +113,11 @@ Page({
         doDelete: doDelete || false
       },
       success: res => {
-        console.log(res.result)
+        // console.log(res.result)
         this.data.menuOneDay.menuList = res.result
         this.data.menuOneDay.menuList.sort(util.compare('menuType'))
         this.setData({ menuOneDay: this.data.menuOneDay })
-        wx.showToast({
-          title: '调用成功'
-        })
+        wx.hideLoading()
       },
       fail: err => {
         wx.showToast({

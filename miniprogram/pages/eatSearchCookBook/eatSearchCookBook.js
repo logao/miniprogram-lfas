@@ -60,6 +60,9 @@ Page({
         mealType: mealType
       })
     } else {
+      wx.showLoading({
+        title: '更新中',
+      })
       db.collection('lfas_meal').where({
         mealType: mealType
       }).get({
@@ -69,6 +72,7 @@ Page({
             mealType: mealType
           })
           that.data.mealTypeList[mealType] = res.data
+          wx.hideLoading()
         },
         fail: function (res) {
           console.log(res)

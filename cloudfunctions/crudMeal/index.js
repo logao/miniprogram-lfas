@@ -17,7 +17,7 @@ exports.main = async (event, context) => {
 
   if (operation == 'add') {
     const meal = event.meal
-    db.collection('lfas_meal').add({
+    const res = await db.collection('lfas_meal').add({
       data: {
         mealType: meal.mealType,
         isBreakfirst: meal.isBreakfirst,
@@ -27,16 +27,24 @@ exports.main = async (event, context) => {
         mealPhotoPath: meal.mealPhotoPath
       }, success(res) {
         console.log(res)
+
       }, fail(res) {
         console.log(res)
       }
     })
+    return res._id
   } else if (operation == 'delete') {
     const mealId = event.mealId
     db.collection('lfas_meal').doc(mealId).remove()
   }
-  else if (operation == 'update') {
+  else if (operation == 'edit') {
     // todo
+    const meal = event.meal
+    const mealId = meal._id
+    delete meal._id
+    db.collection('lfas_meal').doc(mealId).update({
+      data:meal
+    })
 
     // const mealQuery = await db.collection('lfas_meal').doc(mealId).get()
     // menu.menuMealList[mealType].mealList.push(mealQuery.data)
