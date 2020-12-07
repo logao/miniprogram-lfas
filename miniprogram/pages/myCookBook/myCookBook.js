@@ -6,6 +6,7 @@ Page({
   data: {
     mealType: 0,
     mealTypeList: [[], [], []],
+    mealListShow: [],
     action: null,
     isBreakfirstRatio: [
       { name: "早餐", value: true },
@@ -15,6 +16,9 @@ Page({
   },
 
   onLoad: function (options) {
+    this.updateMealList()
+  },
+  onReachBottom() {
     this.updateMealList()
   },
 
@@ -81,39 +85,29 @@ Page({
   },
 
   updateMealList() {
-    const that = this
+    const self = this
     const mealType = this.data.mealType
-    const mealList = this.data.mealTypeList[mealType]
+    const isBreakfirst = this.data.isBreakfirst
+    // const oldMealList = this.data.mealTypeList[mealType]
+    
+    this.mealListShow()
+    const oldMealList = this.data.mealListShow
 
-    if (mealList.length > 0) {
-      this.mealListShow()
-    } else {
-      wx.showLoading({
-        title: '更新中',
-      })
-      db.collection('lfas_meal').where({
-        mealType: mealType
-      }).get({
-        success: function (res) {
-          // that.setData({
-          //   mealList: res.data,
-          //   mealType: mealType
-          // })
-          that.data.mealList = res.data
-          that.data.mealType = mealType
-          that.data.mealTypeList[mealType] = res.data
-          that.mealListShow()
-          wx.hideLoading()
-        },
-        fail: function (res) {
-          wx.showToast({
-            icon: 'none',
-            title: '调用失败',
-          })
-          console.error('[云函数] [sum] 调用失败：', err)
-        }
-      })
-    }
+    wx.showLoading({
+      title: '更新中',
+    })
+
+    db.collection('lfas_meal').where({
+      mealType: mealType,
+      isBreakfirst: isBreakfirst
+    }).skip(oldMealList.length).limit(10).get().then(
+      res => {
+        self.data.mealTypeList[mealType] = oldMealList.concat(res.data)
+        // mealList = res.data
+        self.mealListShow()
+        wx.hideLoading()
+      }
+    )
   },
 
   mealListShow() {

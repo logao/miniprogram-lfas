@@ -28,6 +28,9 @@ Page({
     eventChannel.on('cookBookAddMeal', function (data) {
       self.data.operation = data.operation
       self.setData({ operation: 'add' })
+      wx.setNavigationBarTitle({
+        title: '增加菜品',
+      })
     })
     eventChannel.on('cookBookEditMeal', function (data) {
       self.data.operation = data.data.operation
@@ -40,6 +43,9 @@ Page({
         operation: 'edit',
         meal: meal,
         localMealPhotoPath: meal.mealPhotoPath
+      })
+      wx.setNavigationBarTitle({
+        title: '编辑菜品',
       })
     })
 
@@ -147,6 +153,23 @@ Page({
         if (e.result != undefined) {
           self.data.meal._id = e.result
         }
+
+        // change operation
+        self.data.operation = 'edit'
+        self.setData({
+          operation: self.data.operation
+        })
+        wx.setNavigationBarTitle({
+          title: '编辑菜品',
+        })
+
+        // 清空上一页的查询缓存
+        var pages = getCurrentPages();
+        var prevPage = pages[pages.length - 2];  //上一个页面
+        var info = prevPage.data //取上页data里的数据也可以修改
+        prevPage.data.mealTypeList = [[], [], []]
+        prevPage.updateMealList()
+
         wx.showToast({
           title: '加菜成功'
         })
@@ -156,17 +179,5 @@ Page({
         })
       }
     })
-
-    // change operation
-    self.data.operation = 'edit'
-    self.setData({
-      operation: self.data.operation
-    })
-
-    // 清空上一页的查询缓存
-    var pages = getCurrentPages();
-    var prevPage = pages[pages.length - 2];  //上一个页面
-    var info = prevPage.data //取上页data里的数据也可以修改
-    prevPage.data.mealTypeList = [[], [], []]
   }
 })

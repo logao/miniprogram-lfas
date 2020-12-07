@@ -37,9 +37,9 @@ exports.main = async (event, context) => {
 
     for (var i = 0; i < rowMenuList.length; i++) {
       var menu = rowMenuList[i]
-      const mealType0MealList = await util.getRandomMealList(menu.menuType0MealNumber, 0, db)
-      const mealType1MealList = await util.getRandomMealList(menu.menuType1MealNumber, 1, db)
-      const mealType2MealList = await util.getRandomMealList(menu.menuType2MealNumber, 2, db)
+      const mealType0MealList = await util.getRandomMealList(i,menu.menuType0MealNumber, 0, db)
+      const mealType1MealList = await util.getRandomMealList(i,menu.menuType1MealNumber, 1, db)
+      const mealType2MealList = await util.getRandomMealList(i,menu.menuType2MealNumber, 2, db)
       menu.menuDateTime = new Date(pickDate + ' ' + menu.menuTime)
       menu.menuMealList =
         [

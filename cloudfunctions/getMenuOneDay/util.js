@@ -2,9 +2,12 @@
 
 // 根据菜的类型和数量，获取随机的一组菜品
 // todo: 根据 member 的 cookbook 进行关联查询
-async function getRandomMealList(mealNum, mealType, db) {
+async function getRandomMealList(menuType, mealNum, mealType, db) {
+  var isBreakfirst = menuType == 0 ? true : false
+
   const result = await db.collection('lfas_meal').where({
-    mealType: mealType
+    mealType: mealType,
+    isBreakfirst: isBreakfirst
   }).get()
 
   var mealList = []
@@ -14,7 +17,7 @@ async function getRandomMealList(mealNum, mealType, db) {
     if (weightArr.length > 0) {
       const arrIndex = getArrIndex(weightArr);
       mealList[i] = weightArr[arrIndex]
-      weightArr.splice(arrIndex,1)
+      weightArr.splice(arrIndex, 1)
     }
   }
 
