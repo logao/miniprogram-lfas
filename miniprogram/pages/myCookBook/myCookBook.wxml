@@ -3,7 +3,7 @@
 
   <view class="myCookBook-ctrl">
     <radio-group class="radio-group tui-fl" bindtap="isBreakfirstRadioChange">
-      <label class="radio myCookBook-ctrl-radio" wx:for="{{isBreakfirstRatio}}">
+      <label class="radio myCookBook-ctrl-radio" wx:for="{{isBreakfirstRadio}}">
         <view class="tui-menu-list">
           <radio color="#007aff" value="{{item.value}}" checked="{{isBreakfirst == item.value ? true : false}}" />
           {{item.name}}</view>

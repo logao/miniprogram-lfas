@@ -1,1 +1,7 @@
 /* miniprogram/pages/eatSearchCookBook/eatSearchCookBook.wxss */
+
+
+.eatSearchCookBook-ctrl-radio:not(:last-child) {
+  float: left;
+  margin-right: 20rpx;
+}

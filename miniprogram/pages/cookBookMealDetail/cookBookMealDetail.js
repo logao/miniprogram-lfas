@@ -5,6 +5,7 @@ const db = wx.cloud.database()
 Page({
   data: {
     operation: '',
+    canChange: true,
     mealTypeRadio: [
       { name: "荤菜", value: 0 },
       { name: "素菜", value: 1 },
@@ -48,18 +49,35 @@ Page({
         title: '编辑菜品',
       })
     })
+    eventChannel.on('viewMeal', function (data) {
+      const meal = data.data.meal
+      Object.keys(meal).forEach(key => {
+        self.data.meal[key] = meal[key]
+      })
+      self.setData({
+        operation: 'view',
+        canChange: false,
+        meal: meal,
+        localMealPhotoPath: meal.mealPhotoPath
+      })
+      wx.setNavigationBarTitle({
+        title: '浏览菜品',
+      })
+    })
 
   },
   choosePhoto() {
     var self = this
-    wx.chooseImage({
-      count: 1,
-      success(res) {
-        var tempFilePaths = res.tempFilePaths;
-        self.setData({ localMealPhotoPath: tempFilePaths[0] });
-      }
-    })
-    this.data.changePhoto = true
+    if (self.data.canChange) {
+      wx.chooseImage({
+        count: 1,
+        success(res) {
+          var tempFilePaths = res.tempFilePaths;
+          self.setData({ localMealPhotoPath: tempFilePaths[0] });
+        }
+      })
+      self.data.changePhoto = true
+    }
   },
 
   inputMealName(e) {
@@ -92,7 +110,7 @@ Page({
       });
   },
   inputMealDesc(e) {
-    this.data.meal.mealDesc = e.detail.value.trim()
+    this.data.meal.mealDesc = e.detail.value
     this.setData({ meal: this.data.meal })
   },
 

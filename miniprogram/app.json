@@ -1,8 +1,10 @@
 {
   "pages": [
+    "pages/eat/eat",
+    "pages/eatSearchCookBook/eatSearchCookBook",
     "pages/myCookBook/myCookBook",
-    "pages/cookBookMealDetail/cookBookMealDetail",
-    "pages/eat/eat"
+    "pages/cookBookMealDetail/cookBookMealDetail"
+    
   ],
   "tabBar": {
     "list": [

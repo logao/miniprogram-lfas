@@ -40,11 +40,15 @@
         <view class="tui-list-box" wx:for="{{menu.menuMealList}}" wx:for-item="menuMealType">
           <view class="tui-list-head">{{mealTypeName[menuMealType.mealType]}}</view>
           <view class="tui-gallery-list" wx:for="{{menuMealType.mealList}}" wx:for-item="meal">
-            <image class="gallery-img tui-fl" src="{{meal.mealPhotoPath}}"></image>
-            <view class="gallery-box gallery-left">
-              <text class="gallery-name">{{meal.mealName}}</text>
-              <text class="gallery-detail">分数：{{meal.mealWeightNum}}</text>
+
+            <view catchtap="viewMeal" data-meal-type="{{meal.mealType}}" data-meal-id="{{meal._id}}" data-menu-id="{{menu._id}}">
+              <image class="gallery-img tui-fl" src="{{meal.mealPhotoPath}}"></image>
+              <view class="gallery-box gallery-left">
+                <text class="gallery-name">{{meal.mealName}}</text>
+                <text class="gallery-detail">分数：{{meal.mealWeightNum}}</text>
+              </view>
             </view>
+
             <icon type="clear" size="30" class="tui-fr" catchtap="clearMeal" data-clear-menu-id="{{menu._id}}"
               data-clear-meal-type="{{meal.mealType}}" data-clear-meal-id="{{meal._id}}" />
           </view>

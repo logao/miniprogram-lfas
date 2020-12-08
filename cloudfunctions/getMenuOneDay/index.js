@@ -24,7 +24,7 @@ exports.main = async (event, context) => {
 
 
 
-  if (result.data.length != 3 || doDelete) {   // todo: 考虑如何实现去重计数
+  if (result.data.length != 3 || doDelete) {
     // 删除已存在的 menu 记录
     await db.collection('lfas_menu').where({
       menuDateTime: _.gte(new Date(pickDate + ' 00:00:00')).and(_.lte(new Date(pickDate + ' 23:59:59')))

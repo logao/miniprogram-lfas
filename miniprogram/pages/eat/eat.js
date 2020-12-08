@@ -75,6 +75,27 @@ Page({
     })
   },
 
+  viewMeal(e) {
+    const menuId = e.currentTarget.dataset.menuId
+    const mealType = e.currentTarget.dataset.mealType
+    const mealId = e.currentTarget.dataset.mealId
+
+    const mealList = this.data.menuOneDay.menuList.filter(menu => menu._id == menuId)[0].menuMealList[mealType].mealList
+    const meal = mealList.find(meal => meal._id == mealId)
+
+    wx.navigateTo({
+      url: '/pages/cookBookMealDetail/cookBookMealDetail',
+      success(res) {
+        res.eventChannel.emit('viewMeal', {
+          data: {
+            operation: 'view',
+            meal: meal
+          }
+        })
+      }
+    })
+  },
+
   clearMeal(e) {
     const clearMenuId = e.currentTarget.dataset.clearMenuId
     const clearMealType = e.currentTarget.dataset.clearMealType
@@ -101,7 +122,7 @@ Page({
   getMenuOneDay(pickDate, doDelete) {
     // console.log("pickDate: " + pickDate)
     // console.log("doDelete: " + doDelete || false)
-    
+
     wx.showLoading({
       title: '更新中',
     })

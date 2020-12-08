@@ -8,7 +8,7 @@ Page({
     mealTypeList: [[], [], []],
     mealListShow: [],
     action: null,
-    isBreakfirstRatio: [
+    isBreakfirstRadio: [
       { name: "早餐", value: true },
       { name: "正餐", value: false },
     ],
@@ -53,7 +53,7 @@ Page({
       success(res) {
         res.eventChannel.emit('cookBookEditMeal', {
           data: {
-            operation: 'Edit',
+            operation: 'edit',
             meal: meal
           }
         })
@@ -88,7 +88,6 @@ Page({
     const self = this
     const mealType = this.data.mealType
     const isBreakfirst = this.data.isBreakfirst
-    // const oldMealList = this.data.mealTypeList[mealType]
     
     this.mealListShow()
     const oldMealList = this.data.mealListShow
@@ -114,10 +113,11 @@ Page({
     const mealType = this.data.mealType
     const mealList = this.data.mealTypeList[mealType]
     const isBreakfirst = this.data.isBreakfirst
-    const mealListShow = mealList.filter(meal => {
-      const ib = typeof (meal.isBreakfirst) == "undefined" ? false : meal.isBreakfirst
-      return ib == isBreakfirst
-    })
+    // const mealListShow = mealList.filter(meal => {
+    //   const ib = typeof (meal.isBreakfirst) == "undefined" ? false : meal.isBreakfirst
+    //   return ib == isBreakfirst
+    // })
+    const mealListShow = mealList.filter(meal=> meal.isBreakfirst == isBreakfirst)
     this.setData({
       mealListShow: mealListShow,
       mealType: mealType
