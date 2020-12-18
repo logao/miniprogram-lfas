@@ -1,0 +1,25 @@
+<view class="myWardrobe-container">
+
+<view class="myWardrobe-ctrl">
+  <view class="btn1" catchtap="wardrobeAddWear">增加衣物</view>
+</view>
+
+<!-- wear Type tab -->
+
+<!-- wear list -->
+<view class="tui-gallery-list" wx:for="{{wearListShow}}" wx:for-item="wear">
+  <view catchtap="wardrobeEditWear" 
+      data-wear-id="{{wear._id}}" >
+    <image class="gallery-img tui-fl" src="{{wear.wearPhotoPath}}"/>
+    <view class="gallery-box gallery-left">
+      <!-- <text class="gallery-name">{{wear.wearType}}</text> -->
+      <text class="gallery-detail">颜色&材料：{{wear.colorType}} {{wear.figureType}} {{wear.materialType}}</text>
+      <text class="gallery-detail">分数：{{wear.scoreNum}}</text>
+    </view>
+  </view>
+  <icon type="clear" size="30" class="tui-fr" 
+      catchtap="wardrobeDeleteOneWear" 
+      data-wear-id="{{wear._id}}" />
+</view>
+
+</view>

@@ -3,8 +3,9 @@
     "pages/eat/eat",
     "pages/eatSearchCookBook/eatSearchCookBook",
     "pages/myCookBook/myCookBook",
-    "pages/cookBookMealDetail/cookBookMealDetail"
-    
+    "pages/cookBookMealDetail/cookBookMealDetail",
+    "pages/myWardrobe/myWardrobe",
+    "pages/wearDetail/wearDetail"
   ],
   "tabBar": {
     "list": [
@@ -19,6 +20,12 @@
         "pagePath": "pages/myCookBook/myCookBook",
         "iconPath": "images/icons/myCookBook.png",
         "selectedIconPath": "images/icons/myCookBook-selected.png"
+      },
+      {
+        "text": "我的衣橱",
+        "pagePath": "pages/myWardrobe/myWardrobe",
+        "iconPath": "images/icons/myWardrobe.png",
+        "selectedIconPath": "images/icons/myWardrobe-selected.png"
       }
     ],
     "color": "#000",

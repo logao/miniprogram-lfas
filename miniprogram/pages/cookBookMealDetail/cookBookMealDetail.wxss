@@ -1,7 +1,5 @@
 /* miniprogram/pages/cookBookMealDetail/cookBookMealDetail.wxss */
 
-.cookBookMealDetail-container {}
-
 .cookBookMealDetail-img-container {
   margin: 0 20rpx 30rpx 20rpx;
   border: 1px solid #c8c7cc;

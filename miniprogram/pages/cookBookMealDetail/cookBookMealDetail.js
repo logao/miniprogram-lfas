@@ -152,14 +152,6 @@ Page({
       self.data.meal.mealPhotoPath = uploadRes.fileID
     }
 
-    // meal._id = event.mealId
-    // meal.mealType = Number(this.data.meal.mealType)
-    // meal.isBreakfirst = this.data.meal.isBreakfirst > 0
-    // meal.mealName = this.data.meal.mealName
-    // meal.mealWeightNum = Number(this.data.meal.mealWeightNum)
-    // meal.mealDesc = this.data.meal.mealDesc
-    // meal.mealPhotoPath = uploadRes.fileID
-
     // add row in db
     wx.cloud.callFunction({
       name: 'crudMeal',

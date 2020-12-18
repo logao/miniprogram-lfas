@@ -7,7 +7,6 @@ Page({
     mealType: 0,
     mealTypeList: [[], [], []],
     mealListShow: [],
-    action: null,
     isBreakfirstRadio: [
       { name: "早餐", value: true },
       { name: "正餐", value: false },

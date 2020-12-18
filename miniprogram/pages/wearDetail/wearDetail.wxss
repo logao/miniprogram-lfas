@@ -1,0 +1,62 @@
+/* miniprogram/pages/wearDetail/wearDetail.wxss */
+
+.wearDetail-img-container {
+  margin: 0 20rpx 30rpx 20rpx;
+  border: 1px solid #c8c7cc;
+  border-radius: 4rpx;
+}
+
+.wearDetail-img {
+  width: 100%;
+  height: 500rpx;
+}
+
+.wearDetail-form {
+  background-color: white;
+  border-top: 1px solid #c8c7cc;
+  border-bottom: 1px solid #c8c7cc;
+  padding-bottom: 10rpx;
+}
+
+.wearDetail-isSport-switch {
+  margin-right: 20rpx;
+}
+
+
+.wearDetail-name-input-placeholder {
+  color: #d2d1d6;
+}
+
+.wearDetail-name-input {
+  padding-left: 60rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.wearDetail-weightNum-button {
+  background-color: #f8f8f8;
+  margin-top:10rpx;
+  margin-left: 30rpx;
+}
+
+.wearDetail-Desc-textarea {
+  width: 670rpx;
+  padding: 25rpx 20rpx;
+  background: #EEE;
+  height: 40px;
+  font-size: 16px;
+  line-height: 16px;
+  min-height:32px;
+}
+
+.wearDetail-submit {
+  width: 730rpx !important;
+  margin: 20rpx;
+}
+
+
+button::after {
+  border-bottom: none;
+  border-top: none;
+  border-radius: 0;
+}

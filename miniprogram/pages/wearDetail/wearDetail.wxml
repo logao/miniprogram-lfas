@@ -1,0 +1,54 @@
+<view class="wearDetail-container">
+  <view class="wearDetail-img-container">
+    <image class="wearDetail-img" src="{{localWearPhotoPath}}" catchtap="choosePhoto" />
+  </view>
+
+  <view class="wearDetail-form">
+  	<!-- 购买日期 -->
+  	<!-- 类别 -->
+
+    <view class="tui-menu-list">
+      <text class="tui-fl" style="margin-right:60rpx;">运动:</text>
+      <switch class="wearDetail-isSport-switch" name="isSport" checked="{{wear.isSport}}"
+        bindchange="isSportChange" hidden="{{!canChange}}" />
+      <view hidden="{{canChange}}">
+        <view wx:if="{{wear.isSport}}">是</view>
+        <view wx:else>否</view>
+      </view>
+    </view>
+
+  	<!-- 颜色 -->
+  	<!-- 花纹 -->
+  	<!-- 布料 -->
+
+    <view class="tui-menu-list">
+      <text class="tui-fl">品牌:</text>
+      <input value="{{wear.brandName}}" placeholder="请输入品牌 ..." class="wearDetail-name-input"
+        placeholder-class="wearDetail-name-input-placeholder" bindinput="inputWearBrandName"
+        disabled="{{!canChange}}" />
+    </view>
+
+    <view class="tui-menu-list" style="height:86rpx">
+      <text class="tui-fl" style="margin-right:60rpx;">分数:</text>
+      <text class="tui-fl" style="margin-right:30rpx;">{{wear.scoreNum}}</text>
+      <button hidden="{{!canChange}}" class="wearDetail-weightNum-button" bindtap="wearScoreNumNextNum"
+        size="mini" style="width: 100rpx;" disabled='{{disabled1}}'>-</button>
+      <button hidden="{{!canChange}}" class="wearDetail-weightNum-button" bindtap="wearScoreNumPreNum"
+        size="mini" style="width: 100rpx;" disabled='{{disabled2}}'>+</button>
+    </view>
+
+
+
+    <view class="tui-menu-list">
+      <text>说明备注：</text>
+      <textarea value="{{wear.wearDesc}}" class="wearDetail-Desc-textarea" bindinput="inputWearDesc"
+        auto-height="true" disabled="{{!canChange}}"/>
+      </view>
+    </view>
+
+
+    <button wx:if="{{operation!='view'}}" class="wearDetail-submit" style='margin:5px;' type="primary" bindtap="wearSubmit">
+        <text wx:if="{{operation=='add'}}">增加</text>
+        <text wx:if="{{operation=='edit'}}">更新</text>
+      </button>
+</view>
